@@ -1,0 +1,4 @@
+/task-manager
+  |-- /includes
+       |-- taskManager.php (business logic)
+  |-- index.php (main interface)
