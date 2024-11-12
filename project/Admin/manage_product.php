@@ -50,7 +50,7 @@ include_once('header.php');
                     <td><?php echo $data->Description ?></td>
                     <td>
                       <a href="" class="btn btn-danger">Delete</a>
-                      <a href="" class="btn btn-primary">Edit</a>
+                      <a href="edit_product?editbtn=<?php echo $data->product_id?>" class="btn btn-primary">Edit</a>
                     </td>
 
                   </tr>

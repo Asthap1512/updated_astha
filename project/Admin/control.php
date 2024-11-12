@@ -103,6 +103,18 @@ class control extends model  // step 2 extends model class
 				include_once('Manage_Categories.php');
 			break;
 
+  
+			case '/edit_Categories':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("cate_id"=>$id);
+					$res=$this->select_where('categories',$where);
+					$fetch=$res->fetch_object();
+					include_once('edit_Categories.php');
+				}
+			break;
 
 			case '/add_product':
 				$cate_arr=$this->select('categories');
@@ -145,7 +157,18 @@ class control extends model  // step 2 extends model class
 				$prod_arr=$this->select_join('product','categories','tital','product.cate_id=categories.cate_id');
 				include_once('manage_product.php');
 			break;
-		
+		 
+			case '/edit_product':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("cate_id"=>$id);
+					$res=$this->select_where('categories',$where);
+					$fetch=$res->fetch_object();
+					include_once('edit_product.php');
+				}
+			break;
 			
 			
 			case '/manage_inquiry':

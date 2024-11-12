@@ -8,7 +8,8 @@ class control extends model  // step 2 extends model class
 
 {
 		function __construct(){ // magic function call automatic when we declare class object
-		
+			session_start();
+
 			model::__construct();  // step 3 call model __construct
 		
 		$url=$_SERVER['PATH_INFO'];
@@ -141,8 +142,120 @@ class control extends model  // step 2 extends model class
 				include_once('getquote.php');
 			break;
 
+			
+			case '/login':
+				if(isset($_REQUEST['login']))
+				{
+					$email=$_REQUEST['email'];
+					$password=md5($_REQUEST['password']);
+					
+					$where=array("email"=>$email,"password"=>$password,"status"=>"Unblock");
+					
+					//login
+					$res=$this->select_where('customer',$where);
+					$chk=$res->num_rows; //check row wise condition
+					
+					if($chk==1) // 1 true 0 false
+					{
+						
+						$fetch=$res->fetch_object();
+						
+						$_SESSION['username']=$fetch->name;
+						$_SESSION['userid']=$fetch->id;
+						
+						echo "<script>
+							alert('Login suuccessfully');
+							window.location='index';
+						</script>";
+					}
+					else
+					{
+						echo "<script>
+							alert('Login failed due to wrong crendential');
+							window.location='login';
+						</script>";
+					}
+				}
+				include_once('login.php');
+			break;
+             
+			case '/profile':
+			
+				$where=array("id"=>$_SESSION['userid']);
+				$res=$this->select_where('customer',$where);
+				$fetch=$res->fetch_object();
+				include_once('profile.php');
+			
+			break;
+
+			// case '/edituser':
+			// 	if(isset($_REQUEST['editbtn']))
+			// 	{
+			// 		$id=$_REQUEST['editbtn'];
+					
+			// 		$where=array("id"=>$id);
+			// 		$res=$this->select_where('customer',$where);
+			// 		$fetch=$res->fetch_object();
+					
+			// 		$arr_country=$this->select('country');
+			// 		include_once('edituser.php');
+			// 	}
+			// break;
+
+			case '/userlogout':
+			
+				unset($_SESSION['userid']);
+				unset($_SESSION['username']);
+				echo "<script>
+							alert('Logout Succesfull');
+							window.location='index';
+						</script>";
+
+			case '/signup':
+				// $arr_country=$this->select('country');
+				if(isset($_REQUEST['submit']))
+				{
+					$name=$_REQUEST['name'];
+					$email=$_REQUEST['email'];
+					$password=$_REQUEST['password'];
+					$pass_enc=md5($password);
+					$gender=$_REQUEST['gender'];
+					
+					$lag_arr=$_REQUEST['lag'];
+					$lag=implode(",",$lag_arr);
+					
+					$cid=$_REQUEST['cid'];
+					
+					
+					echo $img=$_FILES['img']['name'];
+	
+					// upload img in folder
+					$path='img/'.$img;     // path
+					$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+					move_uploaded_file($dupimg,$path);  // move duplicate img in path
+					
+					
+					$arr=array("name"=>$name,"email"=>$email,"password"=>$password,"gender"=>$gender,"lag"=>$lag
+					,"cid"=>$cid,"img"=>$img);
+					
+					$res=$this->insert('customer',$arr);
+					if($res)
+					{
+						echo "<script>
+							alert('Signup suuccessfully');
+							window.location='signup';
+						</script>";
+					}
+					else
+					{
+						echo "Not success";
+					}
+				}
+				include_once('signup.php');
+			break;
+
 			case '/contact':
-				$cust_arr=$this->select('customer');
+				$cont_arr=$this->select('contact');
 				if(isset($_REQUEST['submit']))
 				{
 					$name=$_REQUEST['name'];
@@ -153,7 +266,7 @@ class control extends model  // step 2 extends model class
 					
 					$arr=array("name"=>$name,"email"=>$email,"phonenumber"=>$phonenumber,"address"=>$address,"city"=>$city);
 					
-					 echo $res=$this->insert('customer',$arr);
+					 echo $res=$this->insert('contact',$arr);
 					if($res)
 					{
 						echo "<script>

@@ -82,6 +82,21 @@ function active($currect_page){
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                    <?php
+					if(isset($_SESSION['userid']))
+					{
+					?>
+					<a href="profile">
+						<i class="fa fa-2x fa-user text-primary mr-3"></i>
+						<div class="text-left">
+							<h6 class="font-weight-semi-bold mb-1">
+								Hi ..<?php echo $_SESSION['username']?>/ MyAccount
+							</h6>
+						</div>
+					</a>
+					<?php	
+					}
+					?>
                 </div>
             </div>
         </div>
@@ -117,7 +132,22 @@ function active($currect_page){
              <br>
              <a href="contact" class="nav-item nav-link <?php active('contact')?>">Contact</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"><i class="fa fa-arrow-right ms-3"></i></a>
+ 
+
+            <?php
+						if(isset($_SESSION['userid']))
+						{
+						?>
+							 <a href="userlogout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout</a>
+						<?php
+						}
+						else
+						{
+						?>
+							 <a href="login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login</a>
+						<?php
+						}
+						?>
         </div>
     </nav>
     <!-- Navbar End -->

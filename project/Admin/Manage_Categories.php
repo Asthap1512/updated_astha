@@ -46,7 +46,7 @@ include_once('header.php');
                         <td><img src="upload/img/<?php echo $data->image?>" width="50px"/></td>
                         <td>
 							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
+							<a href="edit_Categories?editbtn=<?php echo $data->cate_id?>" class="btn btn-primary">Edit</a>
 						</td>
                        
                       </tr>
