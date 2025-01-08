@@ -5,12 +5,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Kraft paper</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">view product</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Kraft paper</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">view product</li>
                 </ol>
             </nav>
         </div>
@@ -25,14 +25,11 @@
                 <h1 class="display-5 mb-5">Our product details</h1>
             </div>
             <div class="row g-4">
-            <?php 
-				foreach($product_arr as $data)
-				{
-				?>
+           	
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                        <img class="img-fluid" src="../Admin/upload/img/<?php echo $data->image?>" alt="">
+                        <img class="img-fluid" src="../Admin/upload/categories/<?php echo $data->image?>" alt="">
 
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
@@ -47,9 +44,6 @@
                        </div>
                      
                
-                 <?php
-                 }
-                 ?>          
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <img class="img-fluid" src="img/1.jpeg" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-3.jpg" alt="">
+                <img class="img-fluid" src="img/1.jpeg" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
                     <div class="container">
                         <div class="row justify-content-center">
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="row g-4 portfolio-container">
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" >
                     <div class="rounded overflow-hidden">
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="img/k1.jpeg" alt="">
@@ -224,48 +224,54 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo01.jpeg" alt="">
+                            <img class="img-fluid w-80 h-80" src="img/slider/logo01.jpeg"  alt="">
                         </div>
                     
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="border border-5 border-light border-top-0 p-4">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo02.jpeg" alt="">
+                            <img class="img-fluidw-80 h-80" src="img/slider/logo02.jpeg"  alt="">
                         </div>
-                        
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="border border-5 border-light border-top-0 p-4">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo03.png" alt="">
+                            <img class="img-fluid w-80 h-80" src="img/slider/logo03.png" alt="">
                         </div>
-                       
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="border border-5 border-light border-top-0 p-4">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo04.jpg" alt="">
+                            <img class="img-fluid w-80 h-80" src="img/slider/logo04.jpg" alt="">
                         </div>
-                        
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="border border-5 border-light border-top-0 p-4">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo05.png" alt="">
+                            <img class="img-fluid w-80 h-80" src="img/slider/logo05.png" alt="">
                         </div>
-                        
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="border border-5 border-light border-top-0 p-4">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/slider/logo06.png" alt="">
+                            <img class="img-fluid w-80 h-80" src="img/slider/logo06.png" alt="">
                         </div>
+                    </div>
                                             </div>
                 </div>
             </div>

@@ -5,12 +5,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">paper</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Our product</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">paper</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Our product</li>
                 </ol>
             </nav>
         </div>
@@ -32,7 +32,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                        <img class="img-fluid" src="../Admin/upload/img/<?php echo $data->image?>" alt="">
+                        <img class="img-fluid" src="../Admin/upload/categories/<?php echo $data->image?>" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                         <h5 class="m-0"><small class="m-0"><?php echo $data->productname?></small></h5>

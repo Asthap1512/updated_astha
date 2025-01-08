@@ -74,10 +74,7 @@ class control extends model  // step 2 extends model class
 					$product_id=$_REQUEST['btn_product'];
 					$where=array("product_id"=>$product_id);
 					$res=$this->select_where('product',$where);
-					while($fetch=$res->fetch_object()) // fetch all data
-					{
-						 $product_arr[]=$fetch;
-					}
+					$data=$res->fetch_object(); // fetch single data
 				}
 				include_once('product_details.php');
 			break;
@@ -160,6 +157,9 @@ class control extends model  // step 2 extends model class
 						
 						$fetch=$res->fetch_object();
 						
+						
+						if($fetch->status=="Unblock")
+						{
 						$_SESSION['username']=$fetch->name;
 						$_SESSION['userid']=$fetch->id;
 						
@@ -167,6 +167,15 @@ class control extends model  // step 2 extends model class
 							alert('Login suuccessfully');
 							window.location='index';
 						</script>";
+					}
+
+					else
+						{
+							echo "<script>
+							alert('Login failed due to Account Blocked');
+							window.location='login';
+							</script>";
+						}
 					}
 					else
 					{
@@ -188,19 +197,69 @@ class control extends model  // step 2 extends model class
 			
 			break;
 
-			// case '/edituser':
-			// 	if(isset($_REQUEST['editbtn']))
-			// 	{
-			// 		$id=$_REQUEST['editbtn'];
+			case '/edituser':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
 					
-			// 		$where=array("id"=>$id);
-			// 		$res=$this->select_where('customer',$where);
-			// 		$fetch=$res->fetch_object();
+					$where=array("id"=>$id);
+					$res=$this->select_where('customer',$where);
+					$fetch=$res->fetch_object();
 					
-			// 		$arr_country=$this->select('country');
-			// 		include_once('edituser.php');
-			// 	}
-			// break;
+					$del_img=$fetch->img;
+					
+					$arr_country=$this->select('country');
+					include_once('edituser.php');
+					
+					
+					if(isset($_REQUEST['submit']))
+					{
+						$name=$_REQUEST['name'];
+						$email=$_REQUEST['email'];
+						$gender=$_REQUEST['gender'];
+						
+						$lag_arr=$_REQUEST['lag'];
+						$lag=implode(",",$lag_arr);
+						
+						$cid=$_REQUEST['cid'];
+						
+						
+						if($_FILES['img']['size']>0)
+						{
+							$img=$_FILES['img']['name'];
+							// upload img in folder
+							$path='img/customer/'.$img;     // path
+							$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupimg,$path);  // move duplicate img in path
+							
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid,"img"=>$img);
+							
+							unlink('img/customer/'.$del_img);
+						}
+						else
+						{
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid);
+						}
+						
+						$res=$this->update('customer',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Update Data suuccessfully');
+								window.location='profile';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
+				}
+			break;
+			
 
 			case '/userlogout':
 			
@@ -212,7 +271,8 @@ class control extends model  // step 2 extends model class
 						</script>";
 
 			case '/signup':
-				// $arr_country=$this->select('country');
+				$arr_country=$this->select('country');
+				//echo($arr_country);
 				if(isset($_REQUEST['submit']))
 				{
 					$name=$_REQUEST['name'];
@@ -235,7 +295,7 @@ class control extends model  // step 2 extends model class
 					move_uploaded_file($dupimg,$path);  // move duplicate img in path
 					
 					
-					$arr=array("name"=>$name,"email"=>$email,"password"=>$password,"gender"=>$gender,"lag"=>$lag
+					$arr=array("name"=>$name,"email"=>$email,"password"=>$pass_enc,"gender"=>$gender,"lag"=>$lag
 					,"cid"=>$cid,"img"=>$img);
 					
 					$res=$this->insert('customer',$arr);

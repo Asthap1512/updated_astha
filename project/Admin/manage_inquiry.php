@@ -48,8 +48,8 @@ include_once('header.php');
                         <td><?php echo $data->phonenumber?></td>
                         <td><?php echo $data->message?></td>
                         <td>
-							<a href="" class="btn btn-danger">Delete</a>
-							<a href="" class="btn btn-primary">Edit</a>
+                        <a href="delete?del_inquiry=<?php echo $data->id ?>" class="btn btn-danger">Delete</a>
+							<a href="edit_inquiry?editbtn=<?php echo $data->id?>" class="btn btn-primary">Edit</a>
 						</td>
                         
                       </tr>

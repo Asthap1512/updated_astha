@@ -75,7 +75,7 @@ class control extends model  // step 2 extends model class
 					$image=$_FILES['image']['name'];
 	
 					// upload img in folder
-					$path='upload/img/'.$image;     // path
+					$path='upload/categories/'.$image;     // path
 					$dupcate_image=$_FILES['image']['tmp_name'];  // duplicate imag get
 					move_uploaded_file($dupcate_image,$path);  // move duplicate img in path
 					
@@ -113,6 +113,42 @@ class control extends model  // step 2 extends model class
 					$res=$this->select_where('categories',$where);
 					$fetch=$res->fetch_object();
 					include_once('edit_Categories.php');
+
+					if(isset($_REQUEST['save']))
+					{
+						$tital=$_REQUEST['tital'];
+						
+						if($_FILES['image']['size']>0)
+						{
+							$image=$_FILES['image']['name'];
+							// upload img in folder
+							$path='upload/categories/'.$image;     // path
+							$dupimage=$_FILES['image']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupimage,$path);  // move duplicate img in path
+							
+							$arr=array("tital"=>$tital,"image"=>$image);
+							unlink('upload/categories/'.$old_image);
+						}
+						else
+						{
+							$arr=array("tital"=>$tital);
+						}
+						
+						$res=$this->update('categories',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Categories Update suuccessfully');
+								window.location='Manage_Categories';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
+
 				}
 			break;
 
@@ -129,14 +165,14 @@ class control extends model  // step 2 extends model class
 					$image=$_FILES['image']['name'];
 	
 					 //upload img in folder
-					$path='upload/img/'.$image;    // path
-					$dupcourse_img=$_FILES['image']['tmp_name'];  // duplicate imag get
-					move_uploaded_file($dupcourse_img,$path);  // move duplicate img in path
+					$path='upload/categories/'.$image;    // path
+					$dupcourse_image=$_FILES['image']['tmp_name'];  // duplicate imag get
+					move_uploaded_file($dupcourse_image,$path);  // move duplicate img in path
 					
 					
 					$arr=array("cate_id"=>$cate_id,"productname"=>$productname,"tital"=>$tital,"description"=>$description,"image"=>$image);
 					
-					$res=$this->insert('product',$arr);
+					 $res=$this->insert('product',$arr);
 					if($res)
 					{
 						echo "<script>
@@ -163,10 +199,51 @@ class control extends model  // step 2 extends model class
 				{
 					$id=$_REQUEST['editbtn'];
 					
-					$where=array("cate_id"=>$id);
-					$res=$this->select_where('categories',$where);
+					$where=array("product_id"=>$id);
+					$res=$this->select_where('product',$where);
 					$fetch=$res->fetch_object();
 					include_once('edit_product.php');
+
+					
+					if(isset($_REQUEST['save']))
+					{
+						
+						$cate_id=$_REQUEST['cate_id'];
+						$productname=$_REQUEST['productname'];
+						$tital=$_REQUEST['tital'];
+						$description=$_REQUEST['description'];
+						
+						
+						if($_FILES['image']['size']>0)
+						{
+							$image=$_FILES['image']['name'];
+							// upload img in folder
+							$path='upload/categories/'.$image;     // path
+							$dupimage=$_FILES['image']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupimage,$path);  // move duplicate img in path
+							
+							$arr=array("cate_id"=>$cate_id,"productname"=>$productname,"tital"=>$tital,"description"=>$description,"image"=>$image);
+							unlink('upload/categories/'.$old_image);
+						}
+						else
+						{
+							$arr=array("cate_id"=>$cate_id,"productname"=>$productname,"tital"=>$tital,"description"=>$description);
+						}
+						
+						$res=$this->update('product',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Product Update suuccessfully');
+								window.location='manage_product';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
 				}
 			break;
 			
@@ -175,13 +252,303 @@ class control extends model  // step 2 extends model class
 				$inq_arr=$this->select('inquiry');
 				include_once('manage_inquiry.php');
 			break;
-			
+
+			case '/edit_inquiry':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("id"=>$id);
+					$res=$this->select_where('inquiry',$where);
+					$fetch=$res->fetch_object();
+					
+					// $del_img=$fetch->img;
+					
+					$arr_country=$this->select('country');
+					include_once('edit_inquiry.php');
+					
+					
+					if(isset($_REQUEST['save']))
+					{
+						$name=$_REQUEST['name'];
+						$email=$_REQUEST['email'];
+						$phonenumber=$_REQUEST['phonenumber'];
+						
+						$message=$_REQUEST['message'];
+						
+						
+						
+						if($_FILES['img']['size']>0)
+						{
+							//$img=$_FILES['img']['name'];
+							// upload img in folder
+							//$path='../PSQUAREEnterprise/img/customer/'.$img;     // path
+							//$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+							//move_uploaded_file($dupimg,$path);  // move duplicate img in path
+							
+							$arr=array("name"=>$name,"email"=>$email,"phonenumber"=>$phonenumber,"message"=>$message);
+							
+							// unlink('../PSQUAREEnterprise/img/customer/'.$del_img);
+						}
+						else
+						{
+							$arr=array("name"=>$name,"email"=>$email,"phonenumber"=>$phonenumber,"message"=>$message);
+						}
+						
+						$res=$this->update('inquiry',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Update Data suuccessfully');
+								window.location='manage_inquiry';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
+				}
+			break;
 
 			case '/manage_customer':
 				$cust_arr=$this->select('customer');
 				include_once('manage_customer.php');
 			break;
 
+			case '/edit_customer':
+				if(isset($_REQUEST['editbtn']))
+				{
+					$id=$_REQUEST['editbtn'];
+					
+					$where=array("id"=>$id);
+					$res=$this->select_where('customer',$where);
+					$fetch=$res->fetch_object();
+					
+					$del_img=$fetch->img;
+					
+					$arr_country=$this->select('country');
+					include_once('edit_customer.php');
+					
+					
+					if(isset($_REQUEST['save']))
+					{
+						$name=$_REQUEST['name'];
+						$email=$_REQUEST['email'];
+						$gender=$_REQUEST['gender'];
+						
+						$lag_arr=$_REQUEST['lag'];
+						$lag=implode(",",$lag_arr);
+						
+						$cid=$_REQUEST['cid'];
+						
+						
+						if($_FILES['img']['size']>0)
+						{
+							$img=$_FILES['img']['name'];
+							// upload img in folder
+							$path='../PSQUAREEnterprise/img/customer/'.$img;     // path
+							$dupimg=$_FILES['img']['tmp_name'];  // duplicate imag get
+							move_uploaded_file($dupimg,$path);  // move duplicate img in path
+							
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid,"img"=>$img);
+							
+							unlink('../PSQUAREEnterprise/img/customer/'.$del_img);
+						}
+						else
+						{
+							$arr=array("name"=>$name,"email"=>$email,"gender"=>$gender,"lag"=>$lag
+							,"cid"=>$cid);
+						}
+						
+						$res=$this->update('customer',$arr,$where);
+						if($res)
+						{
+							echo "<script>
+								alert('Update Data suuccessfully');
+								window.location='manage_customer';
+							</script>";
+						}
+						else
+						{
+							echo "Not success";
+						}
+					}
+					
+				}
+			break;
+
+
+
+			case '/delete':
+				
+				if(isset($_REQUEST['del_Categories']))
+				{
+					$id=$_REQUEST['del_Categories'];
+					$where=array("cate_id"=>$id);
+					
+					// image get for delete
+					$sel_sel=$this->select_where('categories',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->image;
+					
+					$res=$this->delete_where('categories',$where);
+					if($res)
+					{
+						unlink('upload/img/'.$del_img); // del image
+						echo "<script>
+							alert('Categories Deleted suuccessfully');
+							window.location='Manage_Categories';
+						</script>";
+					}
+				}
+
+				if(isset($_REQUEST['del_product']))
+				{
+					$id=$_REQUEST['del_product'];
+					$where=array("product_id"=>$id);
+					
+					// image get for delete
+					$sel_sel=$this->select_where('product',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->image;
+					
+					$res=$this->delete_where('product',$where);
+					if($res)
+					{
+						unlink('upload/img/'.$del_img); // del image
+						echo "<script>
+							alert('Categories Deleted suuccessfully');
+							window.location='manage_product';
+						</script>";
+					}
+				}
+
+				if(isset($_REQUEST['del_inquiry']))
+				{
+					$id=$_REQUEST['del_inquiry'];
+					$where=array("id"=>$id);
+					
+					$res=$this->delete_where('inquiry',$where);
+					if($res)
+					{
+					
+						echo "<script>
+							alert('inquiry Deleted suuccessfully');
+							window.location='manage_inquiry';
+						</script>";
+					}
+				}
+
+				if(isset($_REQUEST['del_customer']))
+				{
+					$id=$_REQUEST['del_customer'];
+					$where=array("id"=>$id);
+
+					$sel_sel=$this->select_where('customer',$where);
+					$fetch=$sel_sel->fetch_object();
+					$del_img=$fetch->img;
+					
+					$res=$this->delete_where('customer',$where);
+					if($res)
+					{
+						unlink('../PSQUAREEnterprise/img/customer/'.$del_img); // del image
+						echo "<script>
+							alert('customer Deleted suuccessfully');
+							window.location='manage_inquiry';
+						</script>";
+					}
+				}
+
+				break;
+
+				case '/status':
+				
+					if(isset($_REQUEST['status_customer']))
+					{
+						$id=$_REQUEST['status_customer'];
+						$where=array("id"=>$id);
+						
+						// status get for delete
+						$sel_sel=$this->select_where('customer',$where);
+						$fetch=$sel_sel->fetch_object();
+						$status=$fetch->status;
+						
+						if($status=="Block")
+						{
+							$arr=array("status"=>"Unblock");
+							$res=$this->update('customer',$arr,$where);
+							if($res)
+							{
+								
+								echo "<script>
+									alert('Customer Unblock suuccessfully');
+									window.location='manage_customer';
+								</script>";
+							}
+						}
+						else
+						{
+							$arr=array("status"=>"Block");
+							$res=$this->update('customer',$arr,$where);
+							if($res)
+							{
+								unset($_SESSION['userid']);
+								unset($_SESSION['username']);
+								echo "<script>
+									alert('Customer Block suuccessfully');
+									window.location='manage_customer';
+								</script>";
+							}
+						}
+						
+					}
+					
+					
+					if(isset($_REQUEST['status_product']))
+					{
+						$id=$_REQUEST['status_product'];
+						$where=array("product_id"=>$id);
+						
+						// status get for delete
+						$sel_sel=$this->select_where('product',$where);
+						$fetch=$sel_sel->fetch_object();
+						$status=$fetch->status;
+						
+						if($status=="Not Available")
+						{
+							$arr=array("status"=>"Available");
+							$res=$this->update('product',$arr,$where);
+							if($res)
+							{
+								
+								echo "<script>
+									alert('Product Available suuccessfully');
+									window.location='manage_product';
+								</script>";
+							}
+						}
+						else
+						{
+							$arr=array("status"=>"Not Available");
+							$res=$this->update('product',$arr,$where);
+							if($res)
+							{
+								echo "<script>
+									alert('Product Not Available suuccessfully');
+									window.location='manage_product';
+								</script>";
+							}
+						}
+						
+					}
+					
+					
+				break;
+			
+				
 			
 			default:
 			include_once('404.php');

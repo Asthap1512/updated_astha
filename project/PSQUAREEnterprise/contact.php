@@ -17,7 +17,9 @@ include_once('header.php');
 </div>
 <!-- Page Header End -->
 
-
+<?php
+                foreach ($cont_arr as $data) {
+                ?>
 <!-- Contact Start -->
 <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
     <div class="container contact px-lg-0">
@@ -83,7 +85,9 @@ include_once('header.php');
     </div>
 </div>
 <!-- Contact End -->
-
+<?php
+                }
+                ?>
 
 <?php
 include_once('footer.php');

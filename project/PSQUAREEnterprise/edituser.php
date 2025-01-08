@@ -16,12 +16,12 @@
   <!-- Page Header Start -->
   <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">about</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Edit Profile</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">about</li>
+                    <li class="breadcrumb-item"><a class="text-white" href="#">Edit Profile</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Edit Profile</li>
                 </ol>
             </nav>
         </div>
@@ -82,13 +82,13 @@
 										if($fetch->cid==$w->id)
 										{
 									?>
-											<option value="<?php echo $w->id;?>" selected ><?php echo $w->name;?></option>
+											<option value="<?php echo $w->id;?>" selected ><?php echo $w->country_name;?></option>
 									<?php
 										}
 										else
 										{
 									?>
-											<option value="<?php echo $w->id;?>" ><?php echo $w->name;?></option>
+											<option value="<?php echo $w->id;?>" ><?php echo $w->country_name;?></option>
 									<?php
 										}
 									}

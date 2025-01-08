@@ -45,7 +45,7 @@ include_once('header.php');
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">productname</label>
-                <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Enter Categries Name">
+                <input type="text" name="productname" class="form-control" id="exampleInputEmail1" placeholder="Enter Product Name">
               </div>
 
 

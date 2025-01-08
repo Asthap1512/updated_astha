@@ -32,7 +32,6 @@ include_once('header.php');
                   <th>Profile</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Password</th>
                   <th>Gender</th>
                   <th>Lag</th>
                   <th>Country</th>
@@ -48,20 +47,20 @@ include_once('header.php');
                     <td><img src="../PSQUAREEnterprise/img/<?php echo $data->img ?>" width="50px" /></td>
                     <td><?php echo $data->name ?></td>
                     <td><?php echo $data->email ?></td>
-                    <td><?php echo $data->password ?></td>
                     <td><?php echo $data->gender ?></td>
                     <td><?php echo $data->lag ?></td>
                     <td><?php echo $data->cid ?></td>
                     <td>
-                      <a href="" class="btn btn-danger">Delete</a>
-                      <a href="" class="btn btn-primary">Edit</a>
+                    <a href="delete?del_customer=<?php echo $data->id ?>" class="btn btn-danger">Delete</a>
+                      <a href="edit_customer?editbtn=<?php echo $data->id?>" class="btn btn-primary">Edit</a>
+                      <a href="status?status_customer=<?php echo $data->id?>" class="btn btn-success"><?php echo $data->status?></a>
                     </td>
 
                   </tr>
                 <?php
                 }
                 ?>
-                </tfoot>
+                </tfoot>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             </table>
           </div><!-- /.box-body -->
         </div><!-- /.box -->

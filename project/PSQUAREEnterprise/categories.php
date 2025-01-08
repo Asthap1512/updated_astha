@@ -32,7 +32,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="overflow-hidden">
-                        <img class="img-fluid" src="../Admin/upload/img/<?php echo $data->image?>" alt="">
+                        <img class="img-fluid" src="../Admin/upload/categories/<?php echo $data->image?>" alt="">
                         </div>
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                         <h5 class="m-0"><small class="m-0"><?php echo $data->tital?></small></h5>

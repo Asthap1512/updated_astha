@@ -39,7 +39,7 @@ include_once('header.php');
                     <div class="form-group">
                 <label for="exampleInputFile">Upload Course File</label>
                 <input type="file" name="image" id="exampleInputFile">
-                <img src="upload/img/<?php echo $fetch->image?>" width="50px"/>
+                <img src="upload/categories/<?php echo $fetch->image?>" width="50px"/>
 
               </div>
                     <!-- radio -->

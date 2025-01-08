@@ -46,11 +46,12 @@ include_once('header.php');
                     <td><?php echo $data->product_id ?></td>
                     <td><?php echo $data->productname ?></td>
                     <td><?php echo $data->tital ?></td>
-                    <td><img src="upload/img/<?php echo $data->image ?>" width="50px"></td>
+                    <td><img src="upload/categories/<?php echo $data->image ?>" width="50px"></td>
                     <td><?php echo $data->Description ?></td>
                     <td>
-                      <a href="" class="btn btn-danger">Delete</a>
-                      <a href="edit_product?editbtn=<?php echo $data->product_id?>" class="btn btn-primary">Edit</a>
+                    <a href="delete?del_product=<?php echo $data->product_id ?>" class="btn btn-danger">Delete</a>
+                    <a href="edit_product?editbtn=<?php echo $data->product_id ?>" class="btn btn-primary">Edit</a>
+                    <a href="status?status_product=<?php echo $data->product_id?>" class="btn btn-success"><?php echo $data->status?></a>
                     </td>
 
                   </tr>

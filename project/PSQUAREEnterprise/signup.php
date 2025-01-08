@@ -68,13 +68,15 @@
                                 Country : 
 								<select name="cid" class="form-control" >
 									<option style="color:black">------ Select Country ------</option>
-									<option style="color:black">india</option>
+                                    <!-- <option style="color:black">india</option>
+                                    <option style="color:black">japan</option> -->
+							        
 									
 									<?php
 									foreach($arr_country as $w)
 									{
 									?>
-										 <option value="<?php echo $w->id;?>"><?php echo $w->name;?></option>
+										 <option value="<?php echo $w->id;?>"><?php echo $w->country_name;?></option>
 									<?php
 									}
 									?> 

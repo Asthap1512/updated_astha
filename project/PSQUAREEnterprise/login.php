@@ -1,7 +1,13 @@
 <?php
+
+if(isset($_SESSION['userid']))
+	{
+		echo "<script>
+			window.location='index';
+		</script>";
+	}
 	include_once('header.php');
 ?>
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
@@ -24,15 +30,16 @@
             <div class="text-center mb-5">
                 <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Login</h5>
                 <h1>Login For Furthor information</h1>
+                <h4 id="msg1" align="center" style="color:#FF0000; text-transform:capitalize"></h4>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-form bg-secondary rounded p-5">
-                       
-                        <form method="post" name="sentMessage" >
+                        <h4 id="msg1" align="center" style="color:#FF0000; text-transform:capitalize"></h4>
+                        <form method="post" name="sentMessage" onsubmit="return reg_form(this)">
                             
                             <div class="control-group">
-                                <input type="email" name="email" class="form-control border-0 p-4" id="email" placeholder="Your Email"  />
+                                <input type="email" name="email" class="form-control border-0 p-4" id="em" placeholder="Your Email"  />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
